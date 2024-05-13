@@ -7,19 +7,22 @@ use Livewire\Volt\Volt;
 
 Route::view("/", "welcome");
 
-Route::view("dashboard", "dashboard")
-    ->middleware(["auth", "verified"])
-    ->name("dashboard");
+Route::group(["middleware" => ["auth", "verified"]], function () {
+    Route::view("dashboard", "dashboard")
+        ->middleware(["auth", "verified"])
+        ->name("dashboard");
 
-Route::resource("clients", ClientController::class);
-Route::resource("users", UserController::class);
+    Route::resource("clients", ClientController::class);
+    Route::resource("users", UserController::class);
 
-Route::post("/users/{id}/token", [UserController::class, "createToken"])->name(
-    "users.token"
-);
+    Route::post("/users/{id}/token", [
+        UserController::class,
+        "createToken",
+    ])->name("users.token");
 
-Route::view("profile", "profile")
-    ->middleware(["auth"])
-    ->name("profile");
+    Route::view("profile", "profile")
+        ->middleware(["auth"])
+        ->name("profile");
+});
 
 require __DIR__ . "/auth.php";
