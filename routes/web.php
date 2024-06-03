@@ -3,12 +3,9 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
-
-Route::view("/", "welcome");
 
 Route::group(["middleware" => ["auth", "verified"]], function () {
-    Route::view("dashboard", "dashboard")
+    Route::view("/", "dashboard")
         ->middleware(["auth", "verified"])
         ->name("dashboard");
 

@@ -11,7 +11,7 @@ class Client extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ["name", "domain", "due_date"];
+    protected $fillable = ["name", "domain", "due_date", "contact", "email"];
 
     protected $casts = [
         "due_date" => "datetime",

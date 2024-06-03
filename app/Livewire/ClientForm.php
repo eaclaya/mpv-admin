@@ -11,11 +11,15 @@ class ClientForm extends Component
     public $name;
     public $domain;
     public $dueDate;
+    public $contact;
+    public $email;
 
     protected $rules = [
         "name" => "required",
         "domain" => "required",
         "dueDate" => "nullable|date",
+        "contact" => "required",
+        "email" => "required",
     ];
 
     public function saveClient()
@@ -43,6 +47,8 @@ class ClientForm extends Component
         $this->name = $this->client->name;
         $this->domain = $this->client->domain;
         $this->dueDate = $this->client->due_date?->format("Y-m-d");
+        $this->contact = $this->client->contact;
+        $this->email = $this->client->email;
     }
 
     public function render()

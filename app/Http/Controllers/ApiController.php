@@ -22,7 +22,10 @@ class ApiController extends Controller
         if (!$client) {
             return response()->json(["error" => "Client not found"], 404);
         }
-        if ($client->due_date && $client->due_date->isPast()) {
+        if (
+            $client->due_date &&
+            $client->due_date->addDays(10)->diffInDays(now()) >= 0
+        ) {
             return response()->json(["expired" => true]);
         }
 
