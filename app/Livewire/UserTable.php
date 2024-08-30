@@ -84,7 +84,31 @@ final class UserTable extends PowerGridComponent
             Button::add("delete-button")->bladeComponent("delete-button", [
                 "id" => $row->id,
             ]),
+            Button::add("generate-token")
+                ->slot("Generate Token")
+                ->class(
+                    "bg-blue-500 text-white py-2 px-3 rounded-md flex text-sm"
+                )
+                ->dispatch("generateToken", ["userId" => $row->id]),
         ];
+    }
+
+    #[On("generateToken")]
+    public function generateToken($userId)
+    {
+        $user = User::findOrFail($userId);
+        $token = $user->createToken($user->email);
+
+        $this->showTokenForm = false;
+        $this->tokenName = "";
+
+        session()->flash(
+            "message",
+            "Personal access token generated successfully. Token: " .
+                $token->plainTextToken
+        );
+
+        return redirect()->route("users.index");
     }
 
     public function confirmDelete($rowId)

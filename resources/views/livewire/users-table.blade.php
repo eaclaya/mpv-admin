@@ -25,6 +25,7 @@
             <td class="px-6 py-4 whitespace-nowrap">
                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                 <a href="#" class="text-red-600 hover:text-red-900 ml-2">Delete</a>
+                <button>Shit</button>
                 <form action="{{ route('users.token', $user->id) }}" method="POST">
                 @csrf()
                 <button type="submit" class="text-green-600 hover:text-green-900 ml-2">Token</button>

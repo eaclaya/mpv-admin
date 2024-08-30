@@ -14,13 +14,16 @@ class ClientForm extends Component
     public $contact;
     public $email;
 
-    protected $rules = [
-        "name" => "required",
-        "domain" => "required",
-        "dueDate" => "nullable|date",
-        "contact" => "required",
-        "email" => "required",
-    ];
+    protected function rules()
+    {
+        return [
+            "name" => "required",
+            "domain" => "required|unique:clients,domain," . $this->client->id,
+            "dueDate" => "nullable|date",
+            "contact" => "required",
+            "email" => "required|email",
+        ];
+    }
 
     public function saveClient()
     {
