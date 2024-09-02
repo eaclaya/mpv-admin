@@ -56,6 +56,7 @@ final class ClientTable extends PowerGridComponent
             Column::make("Id", "id"),
             Column::make("Name", "name")->sortable()->searchable(),
             Column::make("Domain", "domain")->sortable()->searchable(),
+            Column::make("Due Date", "due_date")->sortable(),
             Column::action("Action"),
         ];
     }
@@ -104,16 +105,4 @@ final class ClientTable extends PowerGridComponent
 
         return redirect()->route("clients.index");
     }
-
-    /*
-    public function actionRules($row): array
-    {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
-        ];
-    }
-    */
 }
