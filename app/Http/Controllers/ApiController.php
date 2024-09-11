@@ -24,7 +24,7 @@ class ApiController extends Controller
         }
         if (
             $client->due_date &&
-            $client->due_date->addDays(10)->diffInDays(now()) >= 0
+            $client->due_date->addDays(15)->diffInDays(now()) >= 0
         ) {
             return response()->json(["expired" => true]);
         }
