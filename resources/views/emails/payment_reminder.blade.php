@@ -10,7 +10,8 @@
 
 <body>
     <p>Hola {{ $client->contact }},</p>
-    <p>Este es un recordatorio del pago de este mes. Por favor asegurate de realizar el pago y enviar el comprobante en los proximos 10 dias para evitar la interrupcion del servicio.</p>
+    <p>Este es un recordatorio del pago de este mes. Por favor asegurate de realizar el pago y enviar el comprobante en
+        los proximos 15 dias para evitar la interrupcion del servicio.</p>
     <p>Muchas gracias.</p>
 </body>
 
