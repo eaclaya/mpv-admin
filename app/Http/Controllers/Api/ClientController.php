@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
-class ApiController extends Controller
+class ClientController extends Controller
 {
     public function clientCheck()
     {
